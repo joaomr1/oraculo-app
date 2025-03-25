@@ -1,8 +1,9 @@
 streamlit==1.31.1
-langchain==0.1.13
+langchain==0.2.2
+langchain-core==0.2.2
 langchain-community
 langchain-groq==0.1.6
-langchain-openai==0.0.6
+langchain-openai==0.0.8
 python-dotenv
 beautifulsoup4
 pypdf

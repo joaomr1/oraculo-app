@@ -2,7 +2,7 @@ import tempfile
 import streamlit as st
 from langchain.memory import ConversationBufferMemory
 from langchain_groq import ChatGroq
-from langchain_openai import ChatOpenAI
+#from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from openai import error as openai_errors
 from loaders import *
@@ -14,10 +14,10 @@ CONFIG_MODELOS = {
         'modelos': ['llama-3.1-70b-versatile', 'gemma2-9b-it', 'mixtral-8x7b-32768'],
         'chat': ChatGroq
     },
-    'OpenAI': {
-        'modelos': ['gpt-4o-mini', 'gpt-4o', 'o1-preview', 'o1-mini'],
-        'chat': ChatOpenAI
-    }
+    #'OpenAI': {
+    #    'modelos': ['gpt-4o-mini', 'gpt-4o', 'o1-preview', 'o1-mini'],
+     #   'chat': ChatOpenAI
+    #}
 }
 
 MEMORIA = ConversationBufferMemory()

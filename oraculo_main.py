@@ -2,9 +2,7 @@ import tempfile
 import streamlit as st
 from langchain.memory import ConversationBufferMemory
 from langchain_groq import ChatGroq
-#from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
-# from openai import error as openai_errors
 from loaders import *
 
 TIPOS_ARQUIVOS_VALIDOS = ['Site', 'Youtube', 'Pdf', 'Csv', 'Txt']
@@ -13,11 +11,7 @@ CONFIG_MODELOS = {
     'Groq': {
         'modelos': ['llama-3.1-70b-versatile', 'gemma2-9b-it', 'mixtral-8x7b-32768'],
         'chat': ChatGroq
-    },
-    #'OpenAI': {
-    #    'modelos': ['gpt-4o-mini', 'gpt-4o', 'o1-preview', 'o1-mini'],
-     #   'chat': ChatOpenAI
-    #}
+    }
 }
 
 MEMORIA = ConversationBufferMemory()
@@ -129,9 +123,6 @@ def pagina_chat():
             except Exception as e:
                 st.error("Erro ao trocar para Groq: " + str(e))
                 resposta = "O Oráculo está sem acesso às APIs no momento."
-        except Exception as e:
-            st.error(f"Erro ao gerar resposta: {e}")
-            resposta = "O Oráculo teve um problema ao responder. Tente novamente."
 
         memoria.chat_memory.add_user_message(input_usuario)
         memoria.chat_memory.add_ai_message(resposta)

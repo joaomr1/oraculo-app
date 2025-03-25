@@ -1,13 +1,4 @@
 streamlit==1.31.1
-langchain==0.1.16
-langchain-core==0.1.35
-langchain-groq==0.1.1
-openai==1.14.2
+langchain==0.2.2
+langchain-groq==0.1.6
 pandas==2.2.1
-langchain-community
-python-dotenv
-beautifulsoup4
-pypdf
-unstructured
-fake_useragent
-youtube_transcript_api

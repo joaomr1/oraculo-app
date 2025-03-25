@@ -4,7 +4,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain_groq import ChatGroq
 #from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
-from openai import error as openai_errors
+# from openai import error as openai_errors
 from loaders import *
 
 TIPOS_ARQUIVOS_VALIDOS = ['Site', 'Youtube', 'Pdf', 'Csv', 'Txt']
@@ -111,8 +111,9 @@ def pagina_chat():
                 'input': input_usuario,
                 'chat_history': memoria.buffer_as_messages
             }))
-        except openai_errors.RateLimitError:
-            st.warning("⚠️ Limite da OpenAI excedido. Trocando automaticamente para Groq.")
+        except Exception as e:
+            st.error(f"Ocorreu um erro ao responder: {str(e)}")
+
             try:
                 groq_api_key = st.session_state.get('api_key_Groq')
                 if not groq_api_key:

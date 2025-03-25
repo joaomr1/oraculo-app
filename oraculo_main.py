@@ -17,6 +17,7 @@ CONFIG_MODELOS = {
 MEMORIA = ConversationBufferMemory()
 
 def carrega_arquivos(tipo_arquivo, arquivo):
+    st.write(f"📁 Tipo de arquivo selecionado: {tipo_arquivo}")
     if tipo_arquivo == 'Site':
         documento = carrega_site(arquivo)
     elif tipo_arquivo == 'Youtube':
@@ -34,6 +35,10 @@ def carrega_arquivos(tipo_arquivo, arquivo):
     return documento
 
 def carrega_modelo(provedor, modelo, api_key, tipo_arquivo, arquivo):
+    st.write("🚀 Iniciando carga do modelo:", modelo)
+    st.write("🔐 API Key preenchida:", bool(api_key))
+    st.write("📎 Arquivo recebido:", bool(arquivo))
+
     if not api_key:
         st.error("Por favor, informe a API Key.")
         st.stop()
@@ -42,6 +47,7 @@ def carrega_modelo(provedor, modelo, api_key, tipo_arquivo, arquivo):
         st.stop()
 
     documento = carrega_arquivos(tipo_arquivo, arquivo)
+    st.write("📄 Documento carregado com sucesso")
 
     system_message = f'''Você é um assistente amigável chamado Oráculo.
     Você possui acesso às seguintes informações vindas 
@@ -155,6 +161,7 @@ def sidebar():
         st.session_state['memoria'] = MEMORIA
 
 def main():
+    st.write("✅ App iniciado com sucesso (main)")
     with st.sidebar:
         sidebar()
     pagina_chat()
